@@ -6,7 +6,7 @@
 using namespace std;
 void main(){
 
-	int pilihan, lama, checkin, checkout, sewa;
+	int pilihan, byrFslts, lama, bulan, tahun, lama, checkin, checkout, sewa;
 ulang:
 	system("cls");
 cout<<"Selamat datang di Hotel Ceria Bersama"<<endl<<endl;
@@ -18,26 +18,31 @@ cout << "3. Sweat" << endl;
 cout << "Masukkan type kamar pilihan anda(1-3): ";cin >> pilihan;
 switch (pilihan) {
 case 1:
-	cout << "Input tanggal check in: ";cin >> checkin;
-	cout << "Input tanggal check out: ";cin >> checkout;
-	lama = checkout - checkin;
+	cout << "Input bulan check in: ";cin >> bulan;
+	cout << "Input tahun check in: ";cin >> tahun;
+	cout << "Lama menginap: ";cin >> lama;
 	sewa = lama * 1000000;
 	break;
 case 2:
-	cout << "Input tanggal check in: ";cin >> checkin;
-	cout << "Input tanggal check out: ";cin >> checkout;
-	lama = checkout - checkin;
+	cout << "Input bulan check in: ";cin >> bulan;
+	cout << "Input tahun check in: ";cin >> tahun;
+	cout << "Lama menginap: ";cin >> lama;
 	sewa = lama * 500000;
 	break;
 case 3:
-	cout << "Input tanggal check in: ";cin >> checkin;
-	cout << "Input tanggal check out: ";cin >> checkout;
-	lama = checkout - checkin;
+	cout << "Input bulan check in: ";cin >> bulan;
+	cout << "Input tahun check in: ";cin >> tahun;
+	cout << "Lama menginap: ";cin >> lama;
 	sewa = lama * 250000;
 	break;
 default:
 	goto ulang;
 }
+cout << "Apakah ingin menggunakan fasilitas kamar tambahan? [Y/T]";cin >> pilihan1;
+if (pilihan1 == "Y" && pilihan1 == "y") {
+	bayarFslts = 50000;
+}
+
 cout << "Total bayar kamar: Rp." << sewa << endl;
 system("pause");
 }

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <string>
 
 struct {
 	int tgl, bulan, tahun, lama = 0, jumKamar, sewa, makan,jmlorang,bmakan,jmlFasilitas, bfasilitas, total;
@@ -10,7 +11,8 @@ struct {
 
 using namespace std;
 void main() {
-	int pilihan, x, pil;
+	int pilihan, x;
+	string pil;
 	cout << "Selamat datang di Hotel Ceria Bersama" << endl << endl;
 	cout << "Silahkan pilih type kamar: " << endl;
 	cout << "               1. VVIP                  " << endl;
@@ -49,21 +51,24 @@ void main() {
 		if (input.jmlorang > 2) {
 			output.bmakan = input.lama * output.makan;
 		}
+		else { output.bmakan = 0; }
 		
 	}
 	cout << "Apakah anda ingin menambah fasilitas <y/t> : "; cin >> pil;
-	if (pil == 'y' || pil == 'Y') {
+	//while (pil == "y" || pil == "Y")
+	if ((pil == "y")||(pil=="Y"))
+	{
 		cout << "Jumlah Fasilitas Tambahan : ";cin >> input.jmlFasilitas;
 		cout << endl;
 	}
 
 	if (input.hari == "minggu" || input.hari == "sabtu" || input.hari == "MINGGU" || input.hari == "SABTU")
 	{
-		output.bfasilitas = input.jmlFasilitas * 100000;
+		output.bfasilitas = input.jmlFasilitas * 50000;
 	}
 	else
 	{
-		output.bfasilitas = input.jmlFasilitas * 50000;
+		output.bfasilitas = input.jmlFasilitas * 100000;
 	}
 	
 
@@ -79,7 +84,7 @@ void main() {
 	cout << "Check out pada tanggal " << x << "-" << input.bulan << "-" << input.tahun << endl;
 	cout << "==========DETAIL BAYAR==========" << endl;
 	cout << "Biaya sewa kamar sebesar Rp." << output.sewa << endl;
-	cout << "Biaya voucher makan tambahan sebesar Rp." << output.makan*input.lama << endl;
+	cout << "Biaya voucher makan tambahan sebesar Rp." << output.bmakan<< endl;
 	cout << "Biaya fasilitas tambahan sebesar Rp." << output.bfasilitas << endl;
 	cout << "Total bayar kamar: Rp." << output.sewa + output.makan*input.lama + output.bfasilitas << endl;
 

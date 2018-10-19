@@ -3,13 +3,13 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <string>
-
+using namespace std;
 struct {
 	int tgl, bulan, tahun, lama = 0, jumKamar, sewa, makan,jmlorang,bmakan,jmlFasilitas, bfasilitas, total;
-	char hari[10];
+	string hari;
 }input, output;
 
-using namespace std;
+
 void main() {
 	int pilihan, x;
 	string pil;
@@ -62,13 +62,13 @@ void main() {
 		cout << endl;
 	}
 
-	if (input.hari == "minggu" || input.hari == "sabtu" || input.hari == "MINGGU" || input.hari == "SABTU")
+	if ((input.hari == "minggu") || (input.hari == "MINGGU")  || (input.hari == "sabtu") || (input.hari == "SABTU"))
 	{
-		output.bfasilitas = input.jmlFasilitas * 50000;
+		output.bfasilitas = input.jmlFasilitas * 100000;
 	}
 	else
 	{
-		output.bfasilitas = input.jmlFasilitas * 100000;
+		output.bfasilitas = input.jmlFasilitas * 50000;
 	}
 	
 

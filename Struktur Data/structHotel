@@ -1,0 +1,93 @@
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <string>
+using namespace std;
+struct {
+	int tgl, bulan, tahun, lama = 0, jumKamar, sewa, makan,jmlorang,bmakan,jmlFasilitas, bfasilitas, total;
+	string hari;
+}input, output;
+
+
+void main() {
+	int pilihan, x;
+	string pil;
+	cout << "Selamat datang di Hotel Ceria Bersama" << endl << endl;
+	cout << "Silahkan pilih type kamar: " << endl;
+	cout << "               1. VVIP                  " << endl;
+	cout << "               2. VIP                   " << endl;
+	cout << "               3. Sweat                 " << endl;
+	cout << "========================================" << endl;
+	cout << "Isi formulir check in terlebih dahulu" << endl;
+	cout << "========================================" << endl;
+	cout << "Masukkan hari check in: "; cin >> input.hari;
+	cout << "Masukkan tanggal check in: "; cin >> input.tgl;
+	cout << "Masukkan bulan check in: "; cin >> input.bulan;
+	cout << "Masukkan tahun check in: "; cin >> input.tahun;
+	cout << "Masukkan lama menginap: "; cin >> input.lama;
+	cout << "Masukkan jumlah kamar yang dipesan: "; cin >> input.jumKamar;
+	for (int i = 1; i <= input.jumKamar; i++) {
+	ulang:
+		cout << "Masukkan type kamar pilihan anda(1-3): "; cin >> pilihan;
+		switch (pilihan) {
+		case 1:
+			output.sewa = input.lama * 1000000;
+			output.makan = 0;
+			break;
+		case 2:
+			output.sewa = input.lama * 500000;
+			output.makan = 50000;
+			break;
+		case 3:
+			output.sewa = input.lama * 250000;
+			output.makan = 50000;
+			break;
+		default:
+			goto ulang;
+		}
+	
+		cout << "Masukkan jumlah orang: "; cin >> input.jmlorang;
+		if (input.jmlorang > 2) {
+			output.bmakan = input.lama * output.makan;
+		}
+		else { output.bmakan = 0; }
+		
+	}
+	cout << "Apakah anda ingin menambah fasilitas <y/t> : "; cin >> pil;
+	//while (pil == "y" || pil == "Y")
+	if ((pil == "y")||(pil=="Y"))
+	{
+		cout << "Jumlah Fasilitas Tambahan : ";cin >> input.jmlFasilitas;
+		cout << endl;
+	}
+
+	if ((input.hari == "minggu") || (input.hari == "MINGGU")  || (input.hari == "sabtu") || (input.hari == "SABTU"))
+	{
+		output.bfasilitas = input.jmlFasilitas * 100000;
+	}
+	else
+	{
+		output.bfasilitas = input.jmlFasilitas * 50000;
+	}
+	
+
+
+
+	cout << endl << endl;
+
+	
+	cout << "==========CHECK OUT==========" << endl;
+	x = input.tgl + input.lama;
+	if (x>30) { x -= 30; input.bulan += 1; }
+	if (input.bulan>12) { input.bulan -= 12; input.tahun += 1; }
+	cout << "Check out pada tanggal " << x << "-" << input.bulan << "-" << input.tahun << endl;
+	cout << "==========DETAIL BAYAR==========" << endl;
+	cout << "Biaya sewa kamar sebesar Rp." << output.sewa << endl;
+	cout << "Biaya voucher makan tambahan sebesar Rp." << output.bmakan<< endl;
+	cout << "Biaya fasilitas tambahan sebesar Rp." << output.bfasilitas << endl;
+	cout << "Total bayar kamar: Rp." << output.sewa + output.makan*input.lama + output.bfasilitas << endl;
+
+
+	system("pause");
+}

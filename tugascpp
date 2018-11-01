@@ -1,0 +1,72 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+void main() {
+	int pil; bool stop = true;
+	int uts[5], uas[5], rata[5], nim[5], banyak, ketemu = 0;
+	int cari;
+	int n ,pilih;
+
+	
+	ulang:
+		system("cls");
+			cout << "pilih menu :" << endl;
+			cout << "1. Input Data" << endl;
+			cout << "2. Cetak Data" << endl;
+			cout << "3. Cari Data" << endl;
+			cout << "0. Selesai" << endl;
+			cout << "Pilih Menu : "; cin >> pilih;
+			switch (pilih) {
+			case 1:
+			balen:	
+			cout << "Banyak Data yang akan diinput? [maks 5] " << endl;
+				cin >> n;
+				if (n <= 5){
+					for (int i = 1; i <= n; i++) {
+						cout << "Masukkan data mahasiswa ke-" << n << endl;
+						cout << "masukkkan nim	: "; cin >> nim[i];
+						cout << "masukkkan UTS	: "; cin >> uts[i];
+						cout << "masukkkan UAS	: "; cin >> uas[i];
+						rata[i] = ((uts[i] + uas[i]) / 2);
+					}
+				}
+				
+				break;
+			case 2:
+			{
+					system("cls");
+					cout << "DAFTAR MAHASISWA SAAT INI" << endl;
+					cout << "--------------------------------------------------" << endl;
+					cout << "No      NIM	UTS    UAS    RATA-RATA" << endl;
+					cout << "--------------------------------------------------" << endl;
+					for (int i = 1; i <= n; i++)
+						cout << i << "	" << nim[i] << "	" << uts[i] << "	" << uas[i] <<" "<<rata[i]<< endl;
+					cout << "----------------------------------------------------" << endl;
+
+				}
+			break;
+			case 3:
+			{system("cls");
+					int cari; bool ketemu = true;
+					cout << "Mencari Nim mahasiswa" << endl;
+					cout << "Masukkan nim yang dicari : "; cin >> cari;
+					for (int i = 1; i <= n; i++)
+					{
+						if (nim[i] == cari)
+						
+						{
+							ketemu = true;
+							cout << "Data Ditemukan pada indexs= " << i << endl;
+							cout << "NIM: " << nim[i] << endl;
+							cout << "UAS: " << uts[i] << endl;
+							cout << "UAS: " << uas[i] << endl;
+						}
+					}
+					if (ketemu=0) { cout << "tidak ada mahasiswa dengan nilai " << cari << endl; }
+				}
+			}
+	system("pause");
+	if (pilih != 0)goto ulang;
+}
